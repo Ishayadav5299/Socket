@@ -111,7 +111,8 @@ return () => {
   {
     messages.map((m, i) => (
       <Typography key = {i} variant= "h6" component= "div" gutterBottom>
-        {m}
+        <strong> {m.sender} </strong>: {m.message} <br/>
+        <small> {new Date(m.timestamp).toLocaleString()} </small>
       </Typography>
     ))
   }
