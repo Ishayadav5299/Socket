@@ -43,6 +43,8 @@ app.get("/login", (req, res) => {
 
 const user = false;
 
+// Middleware
+
 // io.use((socket, next) => {
 //     cookieParser()(socket.request, socket.request.res, (err) => {
 //         if(err) return next(err);
@@ -61,7 +63,8 @@ console.log("User Connected", socket.id);
 
 socket.on("message", ({room, message}) => {
     console.log({room, message});
-    socket.to(room).emit("receive-message", message);
+    // send the message to everyone in the room using io, including the sender
+    io.to(room).emit("receive-message", message);
 });
 
 socket.on("join-room", (room) => {

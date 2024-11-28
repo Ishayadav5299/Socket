@@ -31,6 +31,7 @@ const App = () => {
    const handleSubmit = (e) => {
     e.preventDefault();
     socket.emit("message", {message, room});
+    // setMessages((messages) => [...messages, message]);
     setMessage("");
   };
 
